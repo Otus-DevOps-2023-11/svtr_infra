@@ -31,7 +31,7 @@ mongodb://localhost:27017/pritunl
 pritunl
 vxhfIVao3Zwc
 bastion_IP = 51.250.99.91
-somevm_IP = 10.129.0.15
+someinternalhost_IP  = 10.129.0.15
 
 подключились OpenVPN , увидели https://51.250.99.91/#/users что пользователь подключился , находится online
 Проверили как указано в задание 

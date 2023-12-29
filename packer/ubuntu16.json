@@ -2,14 +2,16 @@
     "builders": [
         {
             "type": "yandex",
-            "service_account_key_file": "key.json",
-            "folder_id": "b1gv1s2gfcm7kpgju26h",
-            "source_image_family": "ubuntu-1604-lts",
+            "service_account_key_file": "{{user `key`}}",
+            "folder_id": "{{user `fid`}}",
+            "source_image_family": "{{user `image`}}",
             "image_name": "reddit-base-{{timestamp}}",
             "image_family": "reddit-base",
             "ssh_username": "ubuntu",
-            "platform_id": "standard-v1",
-	        "use_ipv4_nat": "true"
+            "use_ipv4_nat": "true",
+            "disk_name": "reddit-base",
+            "disk_size_gb": "20",
+            "platform_id": "standard-v1"
         }
     ],
     "provisioners": [

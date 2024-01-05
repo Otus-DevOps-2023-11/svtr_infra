@@ -1,8 +1,8 @@
 provider "yandex" {
-  token                    = var.token
-  cloud_id                 = var.cloud_id
-  folder_id                = var.folder_id
-  zone                     = var.zone
+  token     = "token"
+  cloud_id  = "cloud-id"
+  folder_id = "folder-id"
+  zone      = "ru-central1-a"
 }
 resource "yandex_compute_instance" "app" {
   name = "reddit-app"

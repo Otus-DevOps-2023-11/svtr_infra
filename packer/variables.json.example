@@ -1,5 +1,5 @@
 {
-  "folder_id": "aaaaaaaaaaaaaaa",
-  "service_acc_key_path": "./key.json.example",
-  "source_image": "ubuntu-1604-lts"
+    "folder_id": "aaaaaaaaaaaaaaa",
+    "service_acc_key_path": "./key.json.example",
+    "source_image": "ubuntu-1604-lts"
 }

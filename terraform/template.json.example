@@ -9,3 +9,4 @@
     "fid": "abcde"
     "image": "ubuntu-1604-lts"
     "token": "12345"
+    "private_key_path":"~/.ssh/appuser"

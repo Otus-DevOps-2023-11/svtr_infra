@@ -111,14 +111,11 @@ $ puma -d
     "instance_name": "reddit-app-instance"
 }
 ```
-
 # ДЗ №6 "Практика IaC с использованием Terraform"
-
 1. Создаем новую ветку в репозитории
 ```css
 $ git checkout -b terraform-1
 ``` 
-
 2. Скачиваем бинарный файл terraform версии 0.12.8, распаковываем архив и помещаем бинарный файл terraform в директорию из переменной $PATH, проверяем версию terraform
 ```css
 $ wget https://releases.hashicorp.com/terraform/0.12.8/terraform_0.12.8_linux_386.zip

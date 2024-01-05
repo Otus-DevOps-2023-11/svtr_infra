@@ -9,3 +9,4 @@ subnet_id                = "tqln"
 service_account_key_file = "key.json"
 privite_key              = "id_ed25519"
 private_key_path         = "~/.ssh/appuser"
+app_count                = 2

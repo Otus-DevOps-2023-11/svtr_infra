@@ -1,0 +1,8 @@
+cloud_id                 = "b1g5lp0XXXXXXXX"
+folder_id                = "b1g0bgaXXXXXXX"
+zone                     = "ru-central1-a"
+image_id                 = "fd89glgotaq3XXXXXX"
+public_key_path          = "~/.ssh/ubuntu.pub"
+private_key_path         = "~/.ssh/ubuntu"
+subnet_id                = "e9b3oen1m672rlej00jr"
+service_account_key_file = "~/Otus/key.json"

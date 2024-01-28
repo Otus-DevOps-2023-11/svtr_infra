@@ -3,7 +3,7 @@ terraform {
     endpoint = "storage.yandexcloud.net"
     bucket   = "thoridal-bucket"
     region   = "ru-central1"
-    key      = "prod/terraform.tfstate"
+    key      = "stage/terraform.tfstate"
     skip_region_validation      = true
     skip_credentials_validation = true
   }

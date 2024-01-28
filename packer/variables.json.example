@@ -1,6 +1,6 @@
+
 {
-    "yc_service_account_key_file": "key.example.json",
-    "yc_folder_id": "REDACTED",
-    "yc_subnet_id": "REDACTED",
-    "yc_ssh_username": "ubuntu"
+    "key": "key.json",
+    "fid": "abcde",
+    "image": "ubuntu-1604-lts"
 }

@@ -10,7 +10,6 @@
       "ssh_username": "ubuntu",
       "platform_id" : "standard-v3",
       "zone": "{{user `zone`}}",
-      "subnet_id": "{{user `subnet_id`}}",
       "use_ipv4_nat": "{{ user `use_ipv4_nat`}}"
 
     }
@@ -26,7 +25,7 @@
     },
     {
       "type": "shell",
-      "script": "./scripts/install_ruby.sh",
+      "script": "./scripts/install_mongodb.sh",
       "execute_command": "sudo {{.Path}}"
     }
   ]

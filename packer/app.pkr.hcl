@@ -1,15 +1,37 @@
+variable "folder_id" {
+  type = string
+  default = null
+}
 
+variable "service_account_key_file" {
+  type = string
+  default = null
+}
+
+variable "source_image_family" {
+  type = string
+  default = null
+}
+
+variable "ssh_username" {
+  type = string
+  default = null
+}
+
+variable "zone" {
+  type = string
+  default = null
+}
 
 source "yandex" "ubuntu16" {
-  service_account_key_file = "/home/maxwell/Otus/key.json"
-  folder_id = "b1g0bgapni0osi095ffl"
-  source_image_family = "ubuntu-1604-lts"
-  image_name = "reddit-app-${formatdate("MM-DD-YYYY", timestamp())}"
-  image_family = "reddit-app"
-  ssh_username = "ubuntu"
+  service_account_key_file = var.service_account_key_file
+  folder_id = var.folder_id
+  source_image_family = var.source_image_family
+  image_name = "reddit-app-base-${formatdate("MM-DD-YYYY", timestamp())}"
+  image_family = "reddit-app-base"
+  ssh_username = var.ssh_username
   platform_id = "standard-v1"
-  subnet_id = "e9b24d2brea26rc2tc3a"
-  zone = "ru-central1-a"
+  zone = var.zone
   use_ipv4_nat = true
 }
 
@@ -18,9 +40,9 @@ build {
 
   provisioner "shell" {
     inline = [
-    "echo Waiting for apt-get to finish...",
-    "a=1; while [ -n \"$(pgrep apt-get)\" ]; do echo $a; sleep 1s; a=$(expr $a + 1); done",
-    "echo Done."
+      "echo Waiting for apt-get to finish...",
+      "a=1; while [ -n \"$(pgrep apt-get)\" ]; do echo $a; sleep 1s; a=$(expr $a + 1); done",
+      "echo Done."
     ]
   }
 

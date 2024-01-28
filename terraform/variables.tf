@@ -42,3 +42,8 @@ variable "app_count" {
   description = "Number of app instances"
   default     = 1
 }
+
+variable instances_count {
+  description = "Count of instances"
+  default     = 1
+}

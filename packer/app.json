@@ -4,7 +4,7 @@
       "type": "yandex",
       "service_account_key_file": "{{ user `key` }}",
       "folder_id": "{{ user `fid` }}",
-      "source_image_family": "{{ image` }}",
+      "source_image_family": "{{ user `image` }}",
       "image_name": "reddit-base-{{timestamp}}",
       "image_family": "reddit-base",
       "ssh_username": "ubuntu",

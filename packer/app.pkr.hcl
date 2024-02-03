@@ -38,6 +38,7 @@ source "yandex" "ubuntu16" {
 build {
   sources = ["source.yandex.ubuntu16"]
 
+
   provisioner "shell" {
     inline = [
       "echo Waiting for apt-get to finish...",
@@ -46,9 +47,12 @@ build {
     ]
   }
 
-  provisioner "shell" {
-    name            = "ruby"
-    script          = "./scripts/install_ruby.sh"
-    execute_command = "sudo {{.Path}}"
+
+  provisioner "ansible" {
+
+    user = "ubuntu"
+    playbook_file = "../ansible/packer_app.yml"
+
   }
+
 }

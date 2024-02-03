@@ -15,18 +15,10 @@
     }
   ],
   "provisioners": [
-    {
-      "type": "shell",
-      "inline": [
-        "echo Waiting for apt-get to finish...",
-        "a=1; while [ -n \"$(pgrep apt-get)\" ]; do echo $a; sleep 1s; a=$(expr $a + 1); done",
-        "echo Done."
-      ]
-    },
-    {
-      "type": "shell",
-      "script": "./scripts/install_mongodb.sh",
-      "execute_command": "sudo {{.Path}}"
-    }
-  ]
-}
+      {
+        "type": "ansible",
+        "playbook_file": "ansible/packer_db.yml"
+      }
+    ]
+  }
+

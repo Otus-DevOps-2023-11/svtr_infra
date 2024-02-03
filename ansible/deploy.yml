@@ -1,0 +1,18 @@
+- name: Deploy app
+  hosts: app
+  tasks:
+    - name: Fetch the application code
+      git:
+        repo: 'https://github.com/express42/reddit.git'
+        dest: /home/ubuntu/reddit
+        version: monolith
+
+    - name: Bundle install
+      bundler:
+        state: present
+        chdir: /home/ubuntu/reddit
+
+  handlers:
+    - name: restart puma
+      become: true
+      systemd: name=puma state=restarted

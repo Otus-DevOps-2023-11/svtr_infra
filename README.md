@@ -449,3 +449,58 @@ private_key_path         = "/path/to/key"
 subnet_id                = "***"
 service_account_key_file = "/path/to/key.json"
 ```
+# ДЗ Ansible-1
+
+1. Усталены ансибл:
+   sudo apt-add-repository ppa:ansible/ansible
+   sudo apt update
+   sudo apt install ansible
+
+2. Настроены файл inventory.
+   reddit-db ansible_host=<ext_ip> ansible_user=ubuntu ansible_private_key_file="/home/appuser/.ssh/ubuntu"
+   Проверка:
+   ansible reddit-db -i ./inventory -m ping
+   Enter passphrase for key '/home/appuser/.ssh/ubuntu':
+   reddit-db | SUCCESS => {
+   "ansible_facts": {
+   "discovered_interpreter_python": "/usr/bin/python3"
+   },
+   "changed": false,
+   "ping": "pong"
+   }
+3. проверено выполнение произвольных комманд:
+   ansible dbserver -m command -a uptime
+4. проверено работу с группами хостов:
+   ansible app -m ping
+5. выполнено создание inventory.yml
+   ansible all -m ping -i inventory.yml
+6. проверка компонентов на серверах:
+   ansible app -m command -a 'ruby -v'
+   ansible app -m command -a 'bundler -v'
+   или обе
+   ansible app -m command -a 'ruby -v; bundler -v' - но это не работает )
+   ansible app -m shell -a 'ruby -v; bundler -v' - вот так работает
+7. Проверка сервера бд
+   ansible db -m command -a 'systemctl status mongod'
+   ansible db -m shell -a 'systemctl status mongod'
+   ansible db -m systemd -a name=mongod
+   или
+   ansible db -m service -a name=mongod
+8. Установка git
+   ansible app -u ubuntu -b -K -m shell -a "sudo apt install -y git"
+   Проверка:
+   ansible app -m apt -a name=git
+9. Клонирование репозитория в новую директорию:
+   ansible app -m git -a 'repo=https://github.com/express42/reddit.git dest=/home/ubuntu/reddit'
+10. Создал и выполнил ansible-playbook clone.yml
+    - name: Clone
+      hosts: app
+      tasks:
+    - name: Clone repo
+      git:
+      repo: https://github.com/express42/reddit.git
+      dest: /home/appuser/reddit
+11.  Удалено и заново внесено в  репозиторий:
+     ansible app -m command -a 'rm -rf ~/reddit'
+     ansible-playbook clone.yml
+     Изменился параметр change потому что заново залился repo

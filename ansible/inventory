@@ -1,4 +1,4 @@
 [app]
-reddit-app-0 ansible_host=51.250.2.190 # ansible_user=ubuntu ansible_private_key_file="/home/appuser/.ssh/ubuntu"
+reddit-app-0 ansible_host=158.160.37.68
 [db]
-reddit-db ansible_host=51.250.10.39
+reddit-db ansible_host=158.160.126.132

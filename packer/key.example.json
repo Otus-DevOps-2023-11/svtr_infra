@@ -1,0 +1,8 @@
+{
+   "id": "REDACTED",
+   "service_account_id": "REDACTED",
+   "created_at": "2023-08-25T15:43:07.198236605Z",
+   "key_algorithm": "RSA_2048",
+   "public_key": "-----BEGIN PUBLIC KEY-----\nREDACTED\n-----END PUBLIC KEY-----\n",
+   "private_key": "-----BEGIN PRIVATE KEY-----\nREDACTED\n-----END PRIVATE KEY-----\n"
+}

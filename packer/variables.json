@@ -1,0 +1,6 @@
+{
+  "yc_service_account_key_file": "packer/key.example.json",
+  "folder_id": "b1gj8nmkmt869i0qcrn3",
+  "yc_subnet_id": "REDACTED",
+  "yc_ssh_username": "ubuntu"
+}

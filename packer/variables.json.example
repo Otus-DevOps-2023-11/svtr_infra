@@ -1,7 +1,6 @@
 {
-    "folder_id": "<folder_id>",
-    "service_account_key_file": "packer/key.example.json",
-    "source_image_family": "ubuntu-1604-lts",
-    "ssh_username": "ubuntu",
-    "zone": "ru-central1-b"
+    "yc_service_account_key_file": "packer/key.example.json",
+    "yc_folder_id": "REDACTED",
+    "yc_subnet_id": "REDACTED",
+    "yc_ssh_username": "ubuntu"
 }

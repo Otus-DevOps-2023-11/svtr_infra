@@ -1,6 +1,6 @@
 {
     "folder_id": "<folder_id>",
-    "service_account_key_file": "./key.json.example",
+    "service_account_key_file": "key.json.example",
     "source_image_family": "ubuntu-1604-lts",
     "ssh_username": "ubuntu",
     "zone": "ru-central1-b"

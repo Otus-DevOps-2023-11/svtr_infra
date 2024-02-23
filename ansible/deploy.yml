@@ -1,15 +1,7 @@
+---
 - name: Deploy App
   hosts: app
-  tags: deploy-tag
-  become: true
   tasks:
-    - name: install git
-      ansible.builtin.apt:
-        update_cache: yes
-        state: present
-        name:
-          - git
-
     - name: Fetch the latest version of application code
       git:
         repo: 'https://github.com/express42/reddit.git'
@@ -17,7 +9,12 @@
         version: monolith
       notify: restart puma
 
-    - name: Bundle install
+    - name: bundle install
       bundler:
         state: present
         chdir: /home/ubuntu/reddit
+
+  handlers:
+    - name: restart puma
+      become: true
+      systemd: name=puma state=restarted

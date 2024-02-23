@@ -3,7 +3,7 @@
   tags: deploy-tag
   become: true
   tasks:
-    - name: install  git
+    - name: install git
       ansible.builtin.apt:
         update_cache: yes
         state: present

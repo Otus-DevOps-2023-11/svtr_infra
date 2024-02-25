@@ -492,7 +492,7 @@ service_account_key_file = "/path/to/key.json"
    ansible app -m apt -a name=git
 9. Клонирование репозитория в новую директорию:
    ansible app -m git -a 'repo=https://github.com/express42/reddit.git dest=/home/ubuntu/reddit'
-10. Создал и выполнил ansible-playbook clone.yml
+10. Создала и выполнил ansible-playbook clone.yml
     - name: Clone
       hosts: app
       tasks:
@@ -504,3 +504,76 @@ service_account_key_file = "/path/to/key.json"
      ansible app -m command -a 'rm -rf ~/reddit'
      ansible-playbook clone.yml
      Изменился параметр change потому что заново залился repo
+
+
+# ДЗ Ansible-3
+
+1. $ ansible-galaxy -h
+2. cd /ansible  mkdir roles
+3. 	$ ansible-galaxy init app
+      $ ansible-galaxy init db
+4. tree db
+5. В директорию шаблоннов роли ansble/roles/db/templates
+   скопируем шаблонизированный конфиг для MongoDB из
+   директории ansible/templates
+6. Файл ansible/roles/db/tasks/main.yml
+7. файл ansible/roles/db/defaults/main.yml
+8. Создадим в папке roles папку app
+9. Выполним команду ansible-galaxy init в папке roles/app
+10. Скопируем секцию tasks в сценарии плейбука ansible/app.yml
+11.  заменить src в модулях copy и template для указания только имени файлов
+12. Скопируйте файл db_config.j2 из директории ansible/templates в директорию ansible/roles/app/templates/
+    Файл ansible/files/puma.service скопируем в ansible/roles/app/files/.
+13.  ansible/roles/app/handlers/main.yml
+     ansible/roles/app/defaults/main.yml
+14. ansible/app.yml ansible/db.yml
+15. пересоздадим инфраструктуру terraform destroy $ terraform apply -auto-approve=false
+16. не забудьте изменить внешние IP адреса
+17. ansible-playbook site.yml --check $ ansible-playbook site.yml
+18. Управление окружениями
+19. В директории ansible/environments создадим две директории для наших окружений stage и prod
+20. инвентори файл ansible/inventory в каждую из директорий окружения environtents/prod и environments/stage
+21. Деплой ansible-playbook -i environments/prod/inventory deploy.yml
+22. Создадим директорию group_vars
+23. ansible/environments/stage/group_vars/all
+24. Конфигурация окружения prod будет идентичной, за исключением переменной env, определенной для группы all
+25. ansible/roles/app/defaults/main.yml:
+    ansible/roles/db/defaults/main.yml
+26. Будем выводить информацию о том, в каком окружении находится конфигурируемый хост
+27.  ansible/roles/app/tasks/main.yml ansible/roles/db/tasks/main.yml
+28. Организуем плейбуки
+29. Улучшим файл ansible.cfg
+30. ansible-playbook playbooks/site.yml
+31. то же для prod
+32. Работа с Community-ролями
+33. с помощью утилиты ansible-galaxy и файла requirements.yml
+34. Используем роль jdauphant.nginx и настроим обратное
+    проксирование для нашего приложения с помощью nginx.
+35. Создадим файлы environments/stage/requirements.yml и
+    environments/prod/requirements.yml
+    Добавим в них запись вида:
+    Установим роль:
+    Комьюнити-роли не стоит коммитить в свой репозиторий, для этого добавим в .gitignore запись: jdauphant.nginx
+    - src: jdauphant.nginx
+      version: v2.21.1
+      ansible-galaxy install -r environments/stage/requirements.yml
+36. 	nginx_sites:
+       default:
+       - listen 80
+       - server_name "reddit"
+       - location / {
+       proxy_pass http://127.0.0.1:порт_приложения;
+       }
+       Добавим эти переменные в stage/group_vars/app и
+       prod/group_vars/app
+37. Добавьте вызов роли jdauphant.nginx в плейбук app.yml. Применил плейбук site.yml
+38. Создайте файл vault.key со произвольной строкой ключа. Изменим файл ansible.cfg
+39. .gitignore
+40. файл ansible/playbooks/users.yml
+41. Создадим файл с данными пользователей для каждого окружения credentials.yml
+42. Зашифруем ansible-vault encrypt environments/prod/credentials.yml
+    ansible-vault encrypt environments/stage/credentials.yml
+43. P.S.
+    Для редактирования переменных нужно использовать
+    команду ansible-vault edit <file>
+    А для расшифровки: ansible-vault decrypt <file>

@@ -1,6 +1,7 @@
 {
-  "yc_service_account_key_file": "packer/key.example.json",
-  "folder_id": "b1gj8nmkmt869i0qcrn3",
-  "yc_subnet_id": "REDACTED",
-  "yc_ssh_username": "ubuntu"
+ "_folder_id": "b1gu9td5uk8ohab1ecp8",
+ "source_image_id": "fd88b7pbagov3l9sg8mh",
+ "_key": "/home/administrator/key.json",
+ "_subnet_id": "e2lnh65a6eqk2hire97v",
+ "_zone": "ru-central1-b"
 }

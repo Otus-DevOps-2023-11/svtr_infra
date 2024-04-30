@@ -11,4 +11,3 @@
         - ruby-bundler
         - build-essential
       state: present
-      

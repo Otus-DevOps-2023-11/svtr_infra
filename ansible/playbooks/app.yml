@@ -1,13 +1,10 @@
-#- name: Deploy application
-#  hosts: app
-#  tags: app-tag
-#  become: true
-- name: Configure App
+---
+- name: Config App
   hosts: app
   become: true
 
-  vars:
-    db_host: 10.128.0.38
+#  vars:
+#    db_host: "{{ hostvars[inventory_hostname]['dbs'][0] }}"
 
   roles:
     - app

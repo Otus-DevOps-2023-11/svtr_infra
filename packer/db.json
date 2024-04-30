@@ -10,27 +10,27 @@
   "builders": [
     {
       "type": "yandex",
-      "source_image_family": "ubuntu-1604-lts",
+	    "source_image_family": "ubuntu-1604-lts",
       "source_image_id": "{{ user `_source_image_id` }}",
       "service_account_key_file": "{{ user `_key` }}",
-      "folder_id": "{{ user `_folder_id` }}",
+	    "folder_id": "{{ user `_folder_id` }}",
       "subnet_id": "{{ user `_subnet_id` }}",
       "zone": "{{ user `_zone` }}",
-      "image_name": "reddit-db-{{ timestamp }}",
-      "use_ipv4_nat": true,
-      "image_family": "reddit-base",
-      "ssh_username": "ubuntu",
-      "platform_id": "standard-v1",
-      "instance_cores": "2",
-      "instance_mem_gb": "2"
+	    "image_name": "reddit-db-{{ timestamp }}",
+	    "use_ipv4_nat": true,
+	    "image_family": "reddit-base",
+	    "ssh_username": "ubuntu",
+	    "platform_id": "standard-v1",
+	    "instance_cores": "2",
+	    "instance_mem_gb": "2"
     }
   ],
-  "provisioners": [
-    {
-      "type": "ansible",
-      "playbook_file": "ansible/playbooks/packer_db.yml",
+    "provisioners": [
+	{
+	    "type": "ansible",
+	    "playbook_file": "ansible/playbooks/packer_db.yml",
       "pause_before": "120s",
       "extra_arguments": [ "--scp-extra-args", "'-O'" ]
-    }
+	}
   ]
 }

@@ -1,4 +1,7 @@
-- name: restart puma
+---
+# handlers file for app
+- name: reload puma
   systemd:
+    daemon_reload: yes
     name: puma
     state: restarted
